@@ -43,5 +43,5 @@ def multiplicaciones():
                 #Si el usuario ingresa cualquier otro valor fuera del rango de opciones, se mostrará por pantalla el error
                 #y se le pedirá ingresar una opción válida.
                 case _:
-                    print("Error: Debe ingresa una opción válida(1, 2, 3 o 4)")
+                    print("Error: Debe ingresar una opción válida(1, 2, 3 o 4)")
 multiplicaciones()
