@@ -3,37 +3,60 @@ import time
 
 def blackjack():
     global cartas,dealer,jugador,valor_dealer,valor_jugador,b
-    cartas=["2","3","4","5","6","7","8","9","10","J","Q","K","A"]
-    dealer=[]
-    jugador=[]
-    valor_jugador=0
-    valor_dealer=0
-    b=0
-    repartir()
+    j=""
+    while j != "3":
+        print("BIENVENIDO AL BLACKJACK")
+        print("1.Empezar a jugar \n2.Como se juega \n3.Salir")
+        j=input("Ingresa (1,2): ")
+        if j == "1":
+            while j=="1":
+                cartas=["2","3","4","5","6","7","8","9","10","J","Q","K","A"]
+                dealer=[]
+                jugador=[]
+                valor_jugador=0
+                valor_dealer=0
+                b=0
+                repartir()
+                j=""
+                while j!="1" and j!="3":
+                    print("1.Jugar otra vez \n2.Salir")
+                    j=input("Ingresa (1,2): ")
+                    if j =="2":
+                        j="3"
+                    elif j !="1":
+                        print("Ingresaste un numero incorrecto. vuelve a intetarlo")
+        elif j=="2":
+            instrucciones()
+        elif j!="2" and j!="3":
+            print("Ingresaste un numero incorrecto. vuelve a intetarlo")
 
 def repartir():
+    global b, jugador
     jugador.append(cartas[random.randint(0,len(cartas)-1)])
-    print("-------------------------------------")
-    print(f"Dealer: {dealer} ")
-    print("-------------------------------------")
-    print(f"Jugador: {jugador} ")
-    print("-------------------------------------")
+    print("🎴 Blackjack 🎴")
+    print("🃏-------------------------------🃏")
+    print(f"🂠 Dealer: {dealer} ")
+    print("🃏-------------------------------🃏")
+    print(f"🂡 Jugador: {jugador} ")
+    print("🃏-------------------------------🃏")
     print("Repartiendo cartas")
     time.sleep(3)
     dealer.append(cartas[random.randint(0,len(cartas)-1)])
-    print("-------------------------------------")
-    print(f"Dealer: {dealer} ")
-    print("-------------------------------------")
-    print(f"Jugador: {jugador} ")
-    print("-------------------------------------")
+    print("🎴 Blackjack 🎴")
+    print("🃏-------------------------------🃏")
+    print(f"🂠 Dealer: {dealer} ")
+    print("🃏-------------------------------🃏")
+    print(f"🂡 Jugador: {jugador} ")
+    print("🃏-------------------------------🃏")
     print("Repartiendo cartas")
     time.sleep(3)
     jugador.append(cartas[random.randint(0,len(cartas)-1)])
-    print("-------------------------------------")
-    print(f"Dealer: {dealer} ")
-    print("-------------------------------------")
-    print(f"Jugador: {jugador} ")
-    print("-------------------------------------")
+    print("🎴 Blackjack 🎴")
+    print("🃏-------------------------------🃏")
+    print(f"🂠 Dealer: {dealer} ")
+    print("🃏-------------------------------🃏")
+    print(f"🂡 Jugador: {jugador} ")
+    print("🃏-------------------------------🃏")
     print("Repartiendo cartas")
     time.sleep(3)
     b=(cartas[random.randint(0,len(cartas)-1)])
@@ -78,7 +101,6 @@ def calcular():
             valor = valor+10
         a=a-1
     valor_jugador=valor
-
     valor=0
     a=0
     for i in dealer:
@@ -116,24 +138,25 @@ def calcular():
         a=a-1
     valor_dealer=valor
     if b == 0:
-        print("-------------------------------------")
-        print(f"Dealer: {dealer} ({valor_dealer})")
-        print("-------------------------------------")
-        print(f"Jugador: {jugador} ({valor_jugador})")
-        print("-------------------------------------")
+        print("🎴 Blackjack 🎴")
+        print("🃏-------------------------------🃏")
+        print(f"🂠 Dealer: {dealer} ({valor_dealer})")
+        print("🃏-------------------------------🃏")
+        print(f"🂡 Jugador: {jugador} ({valor_jugador})")
+        print("🃏-------------------------------🃏")
         resultado()
-
     elif b != 0:
         mostrar()
 
 def mostrar():
     global b
     orden=0
-    print("-------------------------------------")
-    print(f"Dealer: {dealer} ({valor_dealer})")
-    print("-------------------------------------")
-    print(f"Jugador: {jugador} ({valor_jugador})")
-    print("-------------------------------------")
+    print("🎴 Blackjack 🎴")
+    print("🃏-------------------------------🃏")
+    print(f"🂠 Dealer: {dealer} ({valor_dealer})")
+    print("🃏-------------------------------🃏")
+    print(f"🂡 Jugador: {jugador} ({valor_jugador})")
+    print("🃏-------------------------------🃏")
     if valor_jugador>21:
         dealer[1]=b
         b=0
@@ -158,8 +181,6 @@ def mostrar():
             except: ValueError
             print("Ingresaste un numero incorrecto. vuelve a intetarlo")
 
-
-
 def pedir(orden):
     if orden==1:
         jugador.append(cartas[random.randint(0,len(cartas)-1)])
@@ -175,38 +196,46 @@ def pedir(orden):
 def resultado():
     global b
     if valor_jugador>21:
-        print("Perdiste 1")
+        print("PERDISTE")
     elif valor_dealer>21:
-        print("GANASTE 2")
+        print("GANASTE")
     elif valor_jugador==21 and len(jugador)==2 and valor_dealer==21 and len(dealer)==2:
-                print("EMPATE 3")
+        print("EMPATE")
     elif valor_jugador==21 and len(jugador)==2:
-                print("GANASTE 4")
+        print("GANASTE")
     elif valor_dealer==21 and len(dealer)==2:
-                print("PERDISTE 5")
-    elif valor_dealer<=16 and valor_dealer<valor_jugador:
+        print("PERDISTE")
+    elif valor_dealer<=16:
         pedir(2)
         return
     elif valor_dealer > valor_jugador:
-        print("PERDISTE 6")
+        print("PERDISTE")
     elif valor_jugador> valor_dealer:
-        print("GANASTE 7")
+        print("GANASTE")
     elif valor_dealer==valor_jugador:
-        print("EMPATE 8")
+        print("EMPATE")
 
-j=0
-while j ==0:
-    try:
-        print("Elige un juego \n1.Blackjack \n2.Salir")
-        j=int(input("Ingresa (1,2): "))
-    except ValueError:
-        print("Ingresaste un numero incorrecto. vuelve a intetarlo")
-    while j==1:
-        blackjack()
-        j=0
-        while j==0:
-            try:
-                print("1.Jugar otra vez \n2.Salir")
-                j=int(input("Ingresa (1,2): "))
-            except ValueError:
-                print("Ingresaste un numero incorrecto. vuelve a intetarlo")
+def instrucciones():
+    print("""
+    -------------------------------------------
+    **Objetivo del juego:**
+    El objetivo es conseguir una mano con un valor total lo más cercano posible a 21, sin pasarse.
+    **Cómo jugar:**
+    1. **Valor de las cartas:**
+    - Las cartas del 2 al 10 valen su número.
+    - Las figuras (J, Q, K) valen 10.
+    - El As vale 1 o 11, según lo que más te convenga.
+    2. **Inicio del juego:**
+    - Tú (el jugador) y el dealer (la casa) reciben 2 cartas cada uno.
+    - Solo una carta del dealer se muestra al principio.
+    3. **Tus opciones:**
+    - **Pedir: Solicitas una carta adicional.
+    - **Quedarte: Conservas tu mano actual y termina tu turno.
+    4. **El turno del dealer:**
+    - El dealer debe pedir cartas hasta tener al menos 17 puntos.
+    - Si pasa de 21, pierde automáticamente.
+    5. **Cómo ganas:**
+    - Ganas si tu mano es 21 o está más cerca de 21 que la del dealer, sin pasarte.
+    - Si te pasas de 21, pierdes automáticamente.
+    -------------------------------------------
+    """)
