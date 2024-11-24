@@ -1,14 +1,17 @@
 import random
 import time
 
-cartas=["2","3","4","5","6","7","8","9","10","J","Q","K","A"]
-dealer=[]
-jugador=[]
-valor_jugador=0
-valor_dealer=0
-b=0
+def blackjack():
+    global cartas,dealer,jugador,valor_dealer,valor_jugador,b
+    cartas=["2","3","4","5","6","7","8","9","10","J","Q","K","A"]
+    dealer=[]
+    jugador=[]
+    valor_jugador=0
+    valor_dealer=0
+    b=0
+    repartir()
+
 def repartir():
-    global b
     jugador.append(cartas[random.randint(0,len(cartas)-1)])
     print("-------------------------------------")
     print(f"Dealer: {dealer} ")
@@ -75,6 +78,7 @@ def calcular():
             valor = valor+10
         a=a-1
     valor_jugador=valor
+
     valor=0
     a=0
     for i in dealer:
@@ -118,6 +122,7 @@ def calcular():
         print(f"Jugador: {jugador} ({valor_jugador})")
         print("-------------------------------------")
         resultado()
+
     elif b != 0:
         mostrar()
 
@@ -153,6 +158,8 @@ def mostrar():
             except: ValueError
             print("Ingresaste un numero incorrecto. vuelve a intetarlo")
 
+
+
 def pedir(orden):
     if orden==1:
         jugador.append(cartas[random.randint(0,len(cartas)-1)])
@@ -166,18 +173,20 @@ def pedir(orden):
         calcular()
 
 def resultado():
+    global b
     if valor_jugador>21:
         print("Perdiste 1")
     elif valor_dealer>21:
         print("GANASTE 2")
-    elif valor_dealer<=16:
-        pedir(2)
     elif valor_jugador==21 and len(jugador)==2 and valor_dealer==21 and len(dealer)==2:
                 print("EMPATE 3")
     elif valor_jugador==21 and len(jugador)==2:
                 print("GANASTE 4")
     elif valor_dealer==21 and len(dealer)==2:
                 print("PERDISTE 5")
+    elif valor_dealer<=16 and valor_dealer<valor_jugador:
+        pedir(2)
+        return
     elif valor_dealer > valor_jugador:
         print("PERDISTE 6")
     elif valor_jugador> valor_dealer:
@@ -185,4 +194,19 @@ def resultado():
     elif valor_dealer==valor_jugador:
         print("EMPATE 8")
 
-repartir()
+j=0
+while j ==0:
+    try:
+        print("Elige un juego \n1.Blackjack \n2.Salir")
+        j=int(input("Ingresa (1,2): "))
+    except ValueError:
+        print("Ingresaste un numero incorrecto. vuelve a intetarlo")
+    while j==1:
+        blackjack()
+        j=0
+        while j==0:
+            try:
+                print("1.Jugar otra vez \n2.Salir")
+                j=int(input("Ingresa (1,2): "))
+            except ValueError:
+                print("Ingresaste un numero incorrecto. vuelve a intetarlo")
