@@ -7,7 +7,7 @@ def blackjack():
     while j != "3":
         print("BIENVENIDO AL BLACKJACK")
         print("1.Empezar a jugar \n2.Como se juega \n3.Salir")
-        j=input("Ingresa (1,2): ")
+        j=input("Ingresa (1,2,3): ")
         if j == "1":
             while j=="1":
                 cartas=["2","3","4","5","6","7","8","9","10","J","Q","K","A"]
@@ -25,13 +25,20 @@ def blackjack():
                         j="3"
                     elif j !="1":
                         print("Ingresaste un numero incorrecto. vuelve a intetarlo")
+                        time.sleep(1)
         elif j=="2":
             instrucciones()
+            time.sleep(1)
         elif j!="2" and j!="3":
             print("Ingresaste un numero incorrecto. vuelve a intetarlo")
+            time.sleep(1)
 
 def repartir():
-    global b, jugador
+    global b
+    print("Mezclando mazo...")
+    time.sleep(1)
+    print("Repartiendo cartas...")
+    time.sleep(1)
     jugador.append(cartas[random.randint(0,len(cartas)-1)])
     print("🎴 Blackjack 🎴")
     print("🃏-------------------------------🃏")
@@ -39,8 +46,8 @@ def repartir():
     print("🃏-------------------------------🃏")
     print(f"🂡 Jugador: {jugador} ")
     print("🃏-------------------------------🃏")
-    print("Repartiendo cartas")
-    time.sleep(3)
+    print("Repartiendo cartas...")
+    time.sleep(2)
     dealer.append(cartas[random.randint(0,len(cartas)-1)])
     print("🎴 Blackjack 🎴")
     print("🃏-------------------------------🃏")
@@ -48,8 +55,8 @@ def repartir():
     print("🃏-------------------------------🃏")
     print(f"🂡 Jugador: {jugador} ")
     print("🃏-------------------------------🃏")
-    print("Repartiendo cartas")
-    time.sleep(3)
+    print("Repartiendo cartas...")
+    time.sleep(2)
     jugador.append(cartas[random.randint(0,len(cartas)-1)])
     print("🎴 Blackjack 🎴")
     print("🃏-------------------------------🃏")
@@ -57,8 +64,8 @@ def repartir():
     print("🃏-------------------------------🃏")
     print(f"🂡 Jugador: {jugador} ")
     print("🃏-------------------------------🃏")
-    print("Repartiendo cartas")
-    time.sleep(3)
+    print("Repartiendo cartas...")
+    time.sleep(2)
     b=(cartas[random.randint(0,len(cartas)-1)])
     dealer.append("?")
     calcular()
@@ -150,7 +157,7 @@ def calcular():
 
 def mostrar():
     global b
-    orden=0
+    orden=""
     print("🎴 Blackjack 🎴")
     print("🃏-------------------------------🃏")
     print(f"🂠 Dealer: {dealer} ({valor_dealer})")
@@ -167,46 +174,43 @@ def mostrar():
         calcular()
     else:
         print("1.Pedir  2.Quedarse")
-        while orden!=1 or orden!=2:
-            try:
-                orden=int(input("Ingrese un numero 1 o 2: "))
-                if orden == 1:
-                    pedir(orden)
-                    break
-                elif orden==2:
-                    dealer[1]=b
-                    b=0
-                    calcular()
-                    break
-            except: ValueError
-            print("Ingresaste un numero incorrecto. vuelve a intetarlo")
+        while orden!="1" and orden!="2":
+            orden=input("Ingrese un numero 1 o 2: ")
+            if orden == "1":
+                pedir(orden)
+            elif orden=="2":
+                dealer[1]=b
+                b=0
+                calcular()
+            else:
+                print("Ingresaste un numero incorrecto. vuelve a intetarlo")
+                time.sleep(1)
 
 def pedir(orden):
-    if orden==1:
+    if orden=="1":
         jugador.append(cartas[random.randint(0,len(cartas)-1)])
         print("El dealer esta sacando una carta...")
-        time.sleep(3)
+        time.sleep(2)
         calcular()
-    elif orden==2:
+    elif orden=="2":
         dealer.append(cartas[random.randint(0,len(cartas)-1)])
         print("El dealer esta sacando una carta...")
-        time.sleep(3)
+        time.sleep(2)
         calcular()
 
 def resultado():
-    global b
     if valor_jugador>21:
         print("PERDISTE")
     elif valor_dealer>21:
         print("GANASTE")
     elif valor_jugador==21 and len(jugador)==2 and valor_dealer==21 and len(dealer)==2:
-        print("EMPATE")
+                print("EMPATE")
     elif valor_jugador==21 and len(jugador)==2:
-        print("GANASTE")
+                print("GANASTE")
     elif valor_dealer==21 and len(dealer)==2:
-        print("PERDISTE")
+                print("PERDISTE")
     elif valor_dealer<=16:
-        pedir(2)
+        pedir("2")
         return
     elif valor_dealer > valor_jugador:
         print("PERDISTE")
@@ -214,6 +218,7 @@ def resultado():
         print("GANASTE")
     elif valor_dealer==valor_jugador:
         print("EMPATE")
+    time.sleep(1)
 
 def instrucciones():
     print("""
