@@ -90,5 +90,3 @@ def AdivinaElNumero():
     explicarReglas()
     sleep(2)
     miniMenu(0)
-
-AdivinaElNumero()

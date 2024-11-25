@@ -96,6 +96,3 @@ def jugada(valor):
                 print("Esa posición ya está ocupada o es inválida. Intenta nuevamente.")
         except ValueError:
             print("Por favor ingresa un número válido del 1 al 9.")
-
-# Inicia el juego
-jugar()
