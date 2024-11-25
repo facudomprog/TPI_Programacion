@@ -1,7 +1,7 @@
 from random import randint
 from time import sleep
 
-def funcionar():
+def AdivinaElNumero():
     def explicarReglas():
         print("¡¡¡Bienvenido a Adivina el Numero!!!")
         sleep(1)
@@ -37,7 +37,7 @@ def funcionar():
                 return 0
 
     def juego():
-        numeroSecreto = randint(1, 100)
+        numeroSecreto = 50 #randint(1, 100)
         intentos = 10
 
         while intentos > 0:
@@ -60,17 +60,17 @@ def funcionar():
                 if adivinanza > numeroSecreto:
                     if adivinanza - numeroSecreto >= 20:
                         print("¡Demasiado alto!")
-                    
-                    elif 10 >= adivinanza - numeroSecreto <= 19:
+                    elif 10 <= adivinanza - numeroSecreto <= 19:
                         print("¡Muy alto!")                    
-
+                    else:
+                        print("¡Alto. Estás muy cerca!")
                 if adivinanza < numeroSecreto:
                     if numeroSecreto - adivinanza >= 20:
                         print("¡Demasiado bajo!")
-
-                    elif 10 >= numeroSecreto - adivinanza <= 19:
+                    elif 10 <= numeroSecreto - adivinanza <= 19:
                         print("¡Muy bajo!")
-
+                    else:
+                        print("¡Bajo. Estás muy cerca!")
             except ValueError:
                 print("El numero que ingresaste no es parte del numero que tenes que adivinar")
                 sleep(1)
@@ -89,6 +89,6 @@ def funcionar():
 
     explicarReglas()
     sleep(2)
-    miniMenu()
+    miniMenu(0)
 
-funcionar()
+AdivinaElNumero()
