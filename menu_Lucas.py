@@ -16,6 +16,6 @@ while True:
         case 4:
             tateti2.jugar()
         case 5:
-            ahorcado.mostrar_palabra()
+            ahorcado.ahorcado()
         case 6: 
             break
