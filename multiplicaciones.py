@@ -1,4 +1,5 @@
 import random
+import time
 def multiplicaciones():
     print("¡¡¡Bienvenido!!! ¡A Multiplicar!")
     #Ciclo repetitivo infinito.
@@ -33,9 +34,11 @@ def multiplicaciones():
                     if opciones[eleccion-1] == producto:
                         print("¡Felicidades! Respuesta correcta.")
                         k = False
+                        time.sleep(3)
                     else:
                         print(f"Respuesta equivocada. El resultado correcto era {producto}. ¡No te rindas, inténtalo de nuevo!")
-                        k = False                        
+                        k = False
+                        time.sleep(4)                        
                 #Si el usuario ingresa la opción 4, sale del juego actual y regresa al menú principal.
                 case 4:
                     j = False
