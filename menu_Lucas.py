@@ -2,6 +2,7 @@ import AdivinaElNumero
 import multiplicaciones
 import Blackjack
 import tateti2
+import ahorcado
 while True:
     op = int(input())
 
@@ -15,4 +16,6 @@ while True:
         case 4:
             tateti2.jugar()
         case 5:
+            ahorcado.mostrar_palabra()
+        case 6: 
             break
