@@ -1,6 +1,6 @@
 import sopaDeLetras
-import ejemplo
-import vlackyack
+import multiplicaciones
+import Blackjack
 
 while True:
     op = int(input())
@@ -9,6 +9,6 @@ while True:
         case 1:
             sopaDeLetras.funcionar()
         case 2:
-            ejemplo.multiplicaciones()
+            multiplicaciones.multiplicaciones()
         case 3:
-            vlackyack.blackjack()
+            Blackjack.blackjack()
