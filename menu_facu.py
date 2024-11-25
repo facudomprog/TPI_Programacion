@@ -10,6 +10,12 @@ while z:
         case 2:
             blackjack()
         case 3:
+            AdivinaElNumero()
+        case 4:
+            tateti()
+        case 5:
+            ahorcado()
+        case 6:
             z = False
         case _:
             print("Debe ingresar una opción válida")
