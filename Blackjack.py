@@ -5,7 +5,7 @@ def blackjack():
     global cartas,dealer,jugador,valor_dealer,valor_jugador,b
     j=""
     while j != "3":
-        print("🂡🂱🂲🎴 ¡BIENVENIDO AL BLACKJACK! 🎴🂡🂱🂲")
+        print("🂡🂱🂲🎴 ¡BIENVENIDO AL BLACKJACK! 🎴🂡🂱🂲") # Menú Principal.
         print("🃏-----------------------------------🃏")
         print("1. Empezar a jugar")
         print("2. Instrucciones")
@@ -14,7 +14,7 @@ def blackjack():
         j=input("👉 Ingresa tu opción (1, 2 o 3): ")
         if j == "1":
             while j=="1":
-                cartas=["2","3","4","5","6","7","8","9","10","J","Q","K","A"]
+                cartas=["2","3","4","5","6","7","8","9","10","J","Q","K","A"] # Inicializacion de variables.
                 dealer=[]
                 jugador=[]
                 valor_jugador=0
@@ -22,7 +22,7 @@ def blackjack():
                 b=0
                 repartir()
                 j=""
-                print("🔁 ¿Qué quieres hacer ahora? 🔁")
+                print("🔁 ¿Qué quieres hacer ahora? 🔁") # Se muestra despues de terminar la partida.
                 print("🃏-----------------------------------🃏")
                 print("1. Jugar otra vez")
                 print("2. Menú Principal")
@@ -45,7 +45,8 @@ def blackjack():
             time.sleep(1)
     print("\n🎉 GRACIAS POR JUGAR 🎉")
     time.sleep(1.5)
-def repartir():
+
+def repartir(): # Reparto de cartas.
     global b
     print("\n🔄 Mezclando mazo...")
     time.sleep(1)
@@ -86,7 +87,7 @@ def calcular():
     global valor_jugador, valor_dealer,b
     valor=0
     a=0
-    for i in jugador:
+    for i in jugador: # Calcula los puntos de el jugardor.
         match i:
             case "2":
                 valor+=2
@@ -122,7 +123,7 @@ def calcular():
     valor_jugador=valor
     valor=0
     a=0
-    for i in dealer:
+    for i in dealer: # Calcula los puntos del dealer.
         match i:
             case "2":
                 valor+=2
@@ -156,7 +157,7 @@ def calcular():
             valor = valor+10
         a=a-1
     valor_dealer=valor
-    if b == 0:
+    if b == 0: # Muestra la carta oculta del dealer, cuando el jugador tiene >=21 o se planta.
         print("🎴 Blackjack 🎴")
         print("🃏------------------------------------------🃏")
         print(f"🂠 Dealer: {dealer} ({valor_dealer})")
@@ -164,14 +165,14 @@ def calcular():
         print(f"🂡 Jugador: {jugador} ({valor_jugador})")
         print("🃏------------------------------------------🃏")
         resultado()
-    elif valor_jugador>21:
+    elif valor_jugador>=21:
         dealer[1]=b
         b=0
         calcular()
     elif b != 0:
         mostrar()
 
-def mostrar():
+def mostrar(): # Muestra ambas manos y su valor.
     global b
     orden=""
     print("🎴 Blackjack 🎴")
@@ -180,11 +181,11 @@ def mostrar():
     print("🃏------------------------------------------🃏")
     print(f"🂡 Jugador: {jugador} ({valor_jugador})")
     print("🃏------------------------------------------🃏")
-    if valor_jugador==21 and len(jugador)==2:
+    if valor_jugador==21 and len(jugador)==2: # Entra si el jugador saca 21 con 2 cartas.
         dealer[1]=b
         b=0
         calcular()
-    else:
+    else: # Le pide una orden al jugador.
         time.sleep(2)
         print("┌──────────────────────────────┐")
         print("│    ¿Qué deseas hacer?        │")
@@ -205,7 +206,7 @@ def mostrar():
                 print("💡 Por favor, intenta nuevamente con un número válido (1 o 2).")
                 time.sleep(1)
 
-def pedir(orden):
+def pedir(orden): # Le da una carta al jugador o al dealer.
     if orden=="1":
         jugador.append(cartas[random.randint(0,len(cartas)-1)])
         print("🎴 El dealer está sacando una carta para ti... 🎴")
@@ -221,7 +222,7 @@ def pedir(orden):
         time.sleep(1)
         calcular()
 
-def resultado():
+def resultado(): # Evalua todas las condiciones para terminar el juego.
     if valor_jugador>21:
         time.sleep(1)
         print("PERDISTE (Te pasaste de 21 puntos)😞")
@@ -247,12 +248,12 @@ def resultado():
     elif valor_jugador> valor_dealer:
         time.sleep(1)
         print("GANASTE (Tienes mas puntos que el dealer)✨")
-    elif valor_dealer==valor_jugador:
+    elif valor_dealer ==valor_jugador:
         time.sleep(1)
         print("EMPATE (Ambos tienen los mismos puntos)🤷‍♂️")
     time.sleep(1.5)
 
-def instrucciones():
+def instrucciones(): # Reglas basicas del juego.
     print("""
     🎴--------------------------------------------🎴
     🌟 **Objetivo del juego:** 🌟
