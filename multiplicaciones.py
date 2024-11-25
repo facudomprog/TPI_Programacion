@@ -47,4 +47,3 @@ def multiplicaciones():
                 #y se le pedirá ingresar una opción válida.
                 case _:
                     print("Error: Debe ingresar una opción válida(1, 2, 3 o 4)")
-multiplicaciones()
