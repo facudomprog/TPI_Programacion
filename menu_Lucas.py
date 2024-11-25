@@ -1,13 +1,14 @@
+import sopaDeLetras
+import multiplicaciones
+import Blackjack
+
 while True:
     op = int(input())
 
     match op:
         case 1:
-            import sopaDeLetras
-
+            sopaDeLetras.funcionar()
         case 2:
-            import ejemplo
-
+            multiplicaciones.multiplicaciones()
         case 3:
-            import vlackyack
-            vlackyack.blackjack()
+            Blackjack.blackjack()
